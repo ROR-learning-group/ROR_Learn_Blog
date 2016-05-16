@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<%= render :partial => @post %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+
+<h2>Comments</h2>
+<div id="comments">
+  <% @post.comments.all.each do |comment| %>
+    <div class="comment_block" style="border: 1px solid; width: 200px;">
+      <%= comment.body %>
+    </div>
+  <% end %>
+</div>
+
+<%= form_for [@post, Comment.new] do |f| %>
+        <p>
+                <%= f.label :body, "New comment" %><br/>
+                <%= f.text_area :body %>
+        </p>
+        <p><%= f.submit "Add comment" %></p>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4" style="border: 2px dotted; background-color: pink;">
+      <h1>Test Title</h1>
+    </div>
+  </div>
+</div>
